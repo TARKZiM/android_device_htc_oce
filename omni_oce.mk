@@ -26,6 +26,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
+    ro.build.fingerprint \
+    ro.build.product \
+    ro.product.device \
+    ro.product.model
+
 PRODUCT_NAME := omni_oce
 PRODUCT_DEVICE := oce
 PRODUCT_BRAND := htc

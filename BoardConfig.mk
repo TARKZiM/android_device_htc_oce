@@ -26,7 +26,7 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 us
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board recovery:0
-TARGET_PREBUILT_KERNEL := device/htc/$(TARGET_DEVICE)/kernel
+TARGET_PREBUILT_KERNEL := device/htc/$(TARGET_DEVICE)/prebuilt/Image.gz-dtb
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
@@ -50,15 +50,14 @@ TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_CRYPTO := true
-TW_CRYPTO_USE_SYSTEM_VOLD := qseecomd hwservicemanager keymaster-3-0
-#TW_INCLUDE_NTFS_3G := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_CRYPTO_USE_SYSTEM_VOLD := qseecomd hwservicemanager servicemanager keymaster-3-0
+TW_INCLUDE_NTFS_3G := true
+#TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_NO_EXFAT_FUSE := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
-TARGET_RECOVERY_DEVICE_MODULES := chargeled tzdata # strace twrpdec
-TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(OUT)/system/usr/share/zoneinfo/tzdata
-#TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(OUT)/system/xbin/strace $(OUT)/recovery/root/sbin/twrpdec
-#TWRP_INCLUDE_LOGCAT := true
+TARGET_RECOVERY_DEVICE_MODULES := chargeled liblog_htc_sbin tzdata hwservicemanager servicemanager android.hidl.base@1.0 # strace twrpdec
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT)/usr/share/zoneinfo/tzdata $(TARGET_OUT)/bin/hwservicemanager $(TARGET_OUT)/bin/servicemanager $(TARGET_OUT)/lib64/android.hidl.base@1.0.so
+TW_USE_TOOLBOX := true
 
 # Shift TWRP off the secondary screen
 TW_Y_OFFSET := 160
@@ -66,8 +65,3 @@ TW_H_OFFSET := -160
 
 # Vendor Init
 BOARD_VENDOR := htc
-TARGET_INIT_VENDOR_LIB := libinit_$(TARGET_DEVICE)
-TARGET_UNIFIED_DEVICE := true
-
-# Additional sepolicy for hwservicemanager
-BOARD_SEPOLICY_DIRS += device/htc/$(TARGET_DEVICE)/sepolicy
