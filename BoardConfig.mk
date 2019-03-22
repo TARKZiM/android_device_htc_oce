@@ -59,8 +59,8 @@ TARGET_RECOVERY_DEVICE_MODULES := chargeled liblog_htc_sbin tzdata hwservicemana
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT)/usr/share/zoneinfo/tzdata $(TARGET_OUT)/bin/hwservicemanager $(TARGET_OUT)/bin/servicemanager $(TARGET_OUT)/lib64/android.hidl.base@1.0.so
 TW_USE_TOOLBOX := true
 
-#TWRP device build version
-TW_DEVICE_VERSION := 3
+# TWRP device build version
+TW_DEVICE_VERSION := 4
 
 # Shift TWRP off the secondary screen
 TW_Y_OFFSET := 160
