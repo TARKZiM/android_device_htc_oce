@@ -59,7 +59,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT)/usr/share/zoneinfo/tzdata $
 TW_USE_TOOLBOX := true
 
 # TWRP Debug Flags
-TWRP_EVENT_LOGGING := true
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd # strace
