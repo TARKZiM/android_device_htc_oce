@@ -65,7 +65,7 @@ TARGET_RECOVERY_DEVICE_MODULES += debuggerd # strace
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd # $(TARGET_OUT_OPTIONAL_EXECUTABLES)/strace
 
 # TWRP device build version
-TW_DEVICE_VERSION := 4
+TW_DEVICE_VERSION := 5
 
 # Shift TWRP off the secondary screen
 TW_Y_OFFSET := 160
